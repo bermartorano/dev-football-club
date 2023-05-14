@@ -7,6 +7,12 @@ class TeamController {
     console.log('oi', allTeams);
     return res.status(200).json(allTeams);
   }
+
+  static async getTeamById(req:Request, res: Response) {
+    const { params: { id } } = req;
+    const team = await TeamService.getTeamById(Number(id));
+    return res.status(200).json(team);
+  }
 }
 
 export default TeamController;
