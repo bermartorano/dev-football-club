@@ -7,5 +7,6 @@ const matchRouter = Router();
 matchRouter.get('/', MatchController.getMatchesFilteredOrNot);
 matchRouter.patch('/:id/finish', TokenValidation.isTokenValid, MatchController.finishMatch);
 matchRouter.patch('/:id', TokenValidation.isTokenValid, MatchController.alterScore);
+matchRouter.post('/', TokenValidation.isTokenValid, MatchController.registerMatch);
 
 export default matchRouter;

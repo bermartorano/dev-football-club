@@ -1,3 +1,4 @@
+import MatchCreationalAtt from '../entities/MatchEntities/MatchCreationalAtt';
 import TeamModel from '../database/models/Team';
 import MatchModel from '../database/models/Match';
 
@@ -32,5 +33,10 @@ export default class MatchService {
   static async alterScore(id: number, score: { homeTeamGoals: number, awayTeamGoals: number }) {
     const { homeTeamGoals, awayTeamGoals } = score;
     await MatchModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+  }
+
+  static async registerMatch(matchInfo: MatchCreationalAtt) {
+    const result = await MatchModel.create({ ...matchInfo, inProgress: true });
+    return result;
   }
 }

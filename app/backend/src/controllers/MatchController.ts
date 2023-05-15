@@ -24,4 +24,10 @@ export default class MatchController {
     await MatchService.alterScore(Number(matchId), body);
     return res.json({ message: 'Score successfully changed' });
   }
+
+  static async registerMatch(req: Request, res: Response) {
+    const { body } = req;
+    const matchRegistered = await MatchService.registerMatch(body);
+    return res.status(201).json(matchRegistered);
+  }
 }
