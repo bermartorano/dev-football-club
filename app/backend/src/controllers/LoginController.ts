@@ -12,7 +12,6 @@ export default class LoginController {
     const { headers: { authorization: token } } = req;
     // A existência do token já foi conferida pelo Middleware.
     const userRole = await LoginService.getRole(token as string);
-    console.log('************* RETORNO DO SERVICE: ', userRole);
     return res.status(200).json({ role: userRole });
   }
 }
