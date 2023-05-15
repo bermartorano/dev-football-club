@@ -9,6 +9,19 @@ export default class MatchService {
         { model: TeamModel, as: 'awayTeam', attributes: ['teamName'] },
       ],
     });
+
+    return matches;
+  }
+
+  static async getMatchesFilteredByProgress(inProgress: boolean) {
+    const matches = await MatchModel.findAll({
+      where: { inProgress },
+      include: [
+        { model: TeamModel, as: 'homeTeam', attributes: ['teamName'] },
+        { model: TeamModel, as: 'awayTeam', attributes: ['teamName'] },
+      ],
+    });
+
     return matches;
   }
 }
