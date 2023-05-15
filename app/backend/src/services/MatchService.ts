@@ -28,4 +28,9 @@ export default class MatchService {
   static async finishMatch(id: number) {
     await MatchModel.update({ inProgress: false }, { where: { id } });
   }
+
+  static async alterScore(id: number, score: { homeTeamGoals: number, awayTeamGoals: number }) {
+    const { homeTeamGoals, awayTeamGoals } = score;
+    await MatchModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+  }
 }

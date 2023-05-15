@@ -18,4 +18,10 @@ export default class MatchController {
     await MatchService.finishMatch(Number(matchId));
     return res.json({ message: 'Finished' });
   }
+
+  static async alterScore(req: Request, res: Response) {
+    const { body, params: { id: matchId } } = req;
+    await MatchService.alterScore(Number(matchId), body);
+    return res.json({ message: 'Score successfully changed' });
+  }
 }
