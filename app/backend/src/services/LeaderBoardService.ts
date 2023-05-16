@@ -5,11 +5,7 @@ import MatchService from './MatchService';
 import TeamService from './TeamService';
 
 export default class LeaderBoardService {
-  static getLeaderBoardHome() {
-    return this.getLeaderBoard('home');
-  }
-
-  private static async getLeaderBoard(homeAwayAll: HomeAwayAll) {
+  static async getLeaderBoard(homeAwayAll: HomeAwayAll) {
     const matches = await MatchService.getMatchesFilteredByProgress(false);
     const teamsWithId = await TeamService.getAllTeams();
     const teamsWithoutId = teamsWithId.map((teamInfo) => teamInfo.teamName);
