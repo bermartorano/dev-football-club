@@ -1,3 +1,4 @@
+import HomeAwayAll from './HomeAwayAll';
 import InfoToTeamRegister from './InfoToTeamRegister';
 
 abstract class Team {
@@ -53,42 +54,42 @@ abstract class Team {
     return this._name;
   }
 
-  getTotalGames(param: 'home' | 'away' | 'all') {
+  getTotalGames(param: HomeAwayAll) {
     if (param === 'all') return this._totalGames.home + this._totalGames.away;
     return this._totalGames[param];
   }
 
-  getTotalVictories(param: 'home' | 'away' | 'all') {
+  getTotalVictories(param: HomeAwayAll) {
     if (param === 'all') return this._totalVictories.home + this._totalVictories.away;
     return this._totalVictories[param];
   }
 
-  getTotalDraws(param: 'home' | 'away' | 'all') {
+  getTotalDraws(param: HomeAwayAll) {
     if (param === 'all') return this._totalDraws.home + this._totalDraws.away;
     return this._totalDraws[param];
   }
 
-  getTotalLosses(param: 'home' | 'away' | 'all') {
+  getTotalLosses(param: HomeAwayAll) {
     if (param === 'all') return this._totalLosses.home + this._totalLosses.away;
     return this._totalLosses[param];
   }
 
-  getGoalsFavor(param: 'home' | 'away' | 'all') {
+  getGoalsFavor(param: HomeAwayAll) {
     if (param === 'all') return this._goalsFavor.home + this._goalsFavor.away;
     return this._goalsFavor[param];
   }
 
-  getGoalsOwn(param: 'home' | 'away' | 'all') {
+  getGoalsOwn(param: HomeAwayAll) {
     if (param === 'all') return this._goalsOwn.home + this._goalsOwn.away;
     return this._goalsOwn[param];
   }
 
-  getGoalsBalance(param: 'home' | 'away' | 'all') {
+  getGoalsBalance(param: HomeAwayAll) {
     if (param === 'all') return this._goalsBalance.home + this._goalsBalance.away;
     return this._goalsBalance[param];
   }
 
-  getEfficiency(param: 'home' | 'away' | 'all') {
+  getEfficiency(param: HomeAwayAll) {
     if (param === 'all') {
       const totalPoints = this._totalPoints.home + this._totalPoints.away;
       const totalGames = this._totalGames.home + this._totalGames.away;
@@ -98,7 +99,7 @@ abstract class Team {
     return this._efficiency[param];
   }
 
-  getTotalPoints(param: 'home' | 'away' | 'all') {
+  getTotalPoints(param: HomeAwayAll) {
     if (param === 'all') return this._totalPoints.home + this._totalPoints.away;
     return this._totalPoints;
   }
