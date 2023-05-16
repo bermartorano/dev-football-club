@@ -31,12 +31,14 @@ export default class Table {
       const goalBalanceDiff = teamA.goalsBalance - teamB.goalsBalance;
       if (goalBalanceDiff > 0) return -1;
       if (goalBalanceDiff < 0) return 1;
+      const goalsFavorDiff = teamA.goalsFavor - teamB.goalsFavor;
+      if (goalsFavorDiff > 0) return -1;
       return 1;
     });
     return teamsTable;
   }
 
-  getTableFormatTeams(homeAwayAll: HomeAwayAll) {
+  private getTableFormatTeams(homeAwayAll: HomeAwayAll) {
     const tableFormatTeamsArray = this.teams.map((teamClass) => {
       const tableFormatTeam = {
         name: teamClass.name,
