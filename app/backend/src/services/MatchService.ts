@@ -1,7 +1,7 @@
 import { Op } from 'sequelize';
 import MatchCreationalAtt from '../entities/MatchEntities/MatchCreationalAtt';
 import TeamModel from '../database/models/Team';
-import MatchModel from '../database/models/Match';
+import MatchModel, { MatchAttributes } from '../database/models/Match';
 import UnprocessableError from '../errorClasses.ts/UnprocessableError';
 import NotFoundError from '../errorClasses.ts/NotFoundError';
 
@@ -17,7 +17,7 @@ export default class MatchService {
     return matches;
   }
 
-  static async getMatchesFilteredByProgress(inProgress: boolean) {
+  static async getMatchesFilteredByProgress(inProgress: boolean): Promise<MatchAttributes[]> {
     const matches = await MatchModel.findAll({
       where: { inProgress },
       include: [
@@ -28,10 +28,11 @@ export default class MatchService {
 
     const matchesValues = matches.map((match) => match.dataValues);
     const matchValuesWithTeams = matchesValues.map((match) => {
+      if (!match.homeTeam || !match.awayTeam) throw new Error('Inconsistency in the Database');
       const newMatch = {
         ...match,
-        homeTeam: { teamName: match.homeTeam?.teamName },
-        awayTeam: { teamName: match.awayTeam?.teamName },
+        homeTeam: { teamName: match.homeTeam.teamName },
+        awayTeam: { teamName: match.awayTeam.teamName },
       };
       return newMatch;
     });

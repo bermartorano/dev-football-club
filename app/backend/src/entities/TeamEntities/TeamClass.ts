@@ -1,7 +1,7 @@
 import HomeAwayAll from './HomeAwayAll';
 import InfoToTeamRegister from './InfoToTeamRegister';
 
-abstract class Team {
+class TeamClass {
   private _totalGames = { home: 0, away: 0 };
   private _totalPoints = { home: 0, away: 0 };
   private _totalVictories = { home: 0, away: 0 };
@@ -10,7 +10,7 @@ abstract class Team {
   private _goalsFavor = { home: 0, away: 0 };
   private _goalsOwn = { home: 0, away: 0 };
   private _goalsBalance = { home: 0, away: 0 };
-  private _efficiency = { home: 0, away: 0 };
+  private _efficiency = { home: 0.00, away: 0.00 };
 
   constructor(private _name: string) {
   }
@@ -35,7 +35,9 @@ abstract class Team {
   private updateEfficiency(homeOrAway: 'home' | 'away') {
     const points = this._totalPoints[homeOrAway];
     const totalGames = this._totalGames[homeOrAway];
-    this._efficiency[homeOrAway] = (points / (totalGames * 3)) * 100;
+    // this._efficiency[homeOrAway] = (points / (totalGames * 3)) * 100;
+    const eff = (points / (totalGames * 3)) * 100;
+    this._efficiency[homeOrAway] = Number(eff.toFixed(2));
   }
 
   private updateVicDrLosPoints(goalBalance: number, homeOrAway: 'home' | 'away') {
@@ -101,8 +103,8 @@ abstract class Team {
 
   getTotalPoints(param: HomeAwayAll) {
     if (param === 'all') return this._totalPoints.home + this._totalPoints.away;
-    return this._totalPoints;
+    return this._totalPoints[param];
   }
 }
 
-export default Team;
+export default TeamClass;
