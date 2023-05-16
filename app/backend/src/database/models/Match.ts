@@ -9,6 +9,8 @@ export interface MatchAttributes {
   awayTeamId: number,
   awayTeamGoals: number,
   inProgress: boolean,
+  homeTeam?: { teamName: string },
+  awayTeam?: { teamName: string },
 }
 
 export type MatchCreationalAttributes = Omit<MatchAttributes, 'id'>;

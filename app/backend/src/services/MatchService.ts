@@ -25,9 +25,18 @@ export default class MatchService {
         { model: TeamModel, as: 'awayTeam', attributes: ['teamName'] },
       ],
     });
-    const matcherValues = matches.map((match) => match.dataValues);
 
-    return matcherValues;
+    const matchesValues = matches.map((match) => match.dataValues);
+    const matchValuesWithTeams = matchesValues.map((match) => {
+      const newMatch = {
+        ...match,
+        homeTeam: { teamName: match.homeTeam?.teamName },
+        awayTeam: { teamName: match.awayTeam?.teamName },
+      };
+      return newMatch;
+    });
+
+    return matchValuesWithTeams;
   }
 
   static async finishMatch(id: number) {
