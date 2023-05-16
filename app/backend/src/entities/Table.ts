@@ -46,7 +46,7 @@ export default class Table {
         totalPoints: teamClass.getTotalPoints(homeAwayAll),
         totalVictories: teamClass.getTotalVictories(homeAwayAll),
         totalDraws: teamClass.getTotalDraws(homeAwayAll),
-        totalLoses: teamClass.getTotalLosses(homeAwayAll),
+        totalLosses: teamClass.getTotalLosses(homeAwayAll),
         goalsFavor: teamClass.getGoalsFavor(homeAwayAll),
         goalsOwn: teamClass.getGoalsOwn(homeAwayAll),
         goalsBalance: teamClass.getGoalsBalance(homeAwayAll),
