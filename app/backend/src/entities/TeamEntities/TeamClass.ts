@@ -96,7 +96,7 @@ class TeamClass {
       const totalPoints = this._totalPoints.home + this._totalPoints.away;
       const totalGames = this._totalGames.home + this._totalGames.away;
       const result = (totalPoints / (totalGames * 3)) * 100;
-      return result;
+      return Number(result.toFixed(2));
     }
     return this._efficiency[param];
   }

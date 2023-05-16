@@ -19,14 +19,22 @@ export default class Table {
     });
   }
 
-  // getOrder(homeOrAwayOrAll: HomeAwayAll) {
-  //   // const tableFormatTeamsArray = this.teams.map((teamClass) => {
-  //   //   const tableFormatTeam = {
-  //   //     name: teamClass.name;
-
-  //   //   };
-  //   // });
-  // }
+  getOrder(homeOrAwayOrAll: HomeAwayAll) {
+    const teamsTable = this.getTableFormatTeams(homeOrAwayOrAll);
+    teamsTable.sort((teamA, teamB) => {
+      const pointDifferece = teamA.totalPoints - teamB.totalPoints;
+      if (pointDifferece > 0) return -1;
+      if (pointDifferece < 0) return 1;
+      const vicDifference = teamA.totalVictories - teamB.totalVictories;
+      if (vicDifference > 0) return -1;
+      if (vicDifference < 0) return 1;
+      const goalBalanceDiff = teamA.goalsBalance - teamB.goalsBalance;
+      if (goalBalanceDiff > 0) return -1;
+      if (goalBalanceDiff < 0) return 1;
+      return 1;
+    });
+    return teamsTable;
+  }
 
   getTableFormatTeams(homeAwayAll: HomeAwayAll) {
     const tableFormatTeamsArray = this.teams.map((teamClass) => {
@@ -40,7 +48,7 @@ export default class Table {
         goalsFavor: teamClass.getGoalsFavor(homeAwayAll),
         goalsOwn: teamClass.getGoalsOwn(homeAwayAll),
         goalsBalance: teamClass.getGoalsBalance(homeAwayAll),
-        getEfficiency: teamClass.getEfficiency(homeAwayAll),
+        efficiency: teamClass.getEfficiency(homeAwayAll),
       };
       return tableFormatTeam;
     });

@@ -11,6 +11,6 @@ export default class LeaderBoardService {
     const teamClassArray = teamsWithoutId.map((team) => new TeamClass(team));
     const table = new Table(teamClassArray);
     table.registerMatchToTable(matches);
-    console.log('************ PRIMEIRO TIME: ', table.getTableFormatTeams('home'));
+    console.log('************ TABELA ALL: ', table.getOrder('all'));
   }
 }
