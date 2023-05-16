@@ -25,8 +25,9 @@ export default class MatchService {
         { model: TeamModel, as: 'awayTeam', attributes: ['teamName'] },
       ],
     });
+    const matcherValues = matches.map((match) => match.dataValues);
 
-    return matches;
+    return matcherValues;
   }
 
   static async finishMatch(id: number) {
