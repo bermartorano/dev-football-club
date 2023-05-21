@@ -4,7 +4,6 @@ import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 
 import { app } from '../app';
-import Example from '../database/models/ExampleModel';
 import TeamModel from '../database/models/Team';
 import teamsMock from './mocks';
 
@@ -14,7 +13,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe('Testes de integração da rota Teams', async () => {
+describe('Testes de integração da rota /teams', async () => {
   afterEach(() => {
     sinon.restore();
   });
