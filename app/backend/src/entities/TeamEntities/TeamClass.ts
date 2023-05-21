@@ -35,7 +35,6 @@ class TeamClass {
   private updateEfficiency(homeOrAway: 'home' | 'away') {
     const points = this._totalPoints[homeOrAway];
     const totalGames = this._totalGames[homeOrAway];
-    // this._efficiency[homeOrAway] = (points / (totalGames * 3)) * 100;
     const eff = (points / (totalGames * 3)) * 100;
     this._efficiency[homeOrAway] = Number(eff.toFixed(2));
   }

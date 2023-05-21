@@ -4,8 +4,7 @@ import TeamModel, { TeamAttributes } from '../database/models/Team';
 class TeamService {
   static async getAllTeams(): Promise<TeamAttributes[]> {
     const allTeams = await TeamModel.findAll();
-    const allTeamsValues = allTeams.map((team) => team.dataValues);
-    return allTeamsValues;
+    return allTeams;
   }
 
   static async getTeamById(id: number): Promise<TeamAttributes> {
