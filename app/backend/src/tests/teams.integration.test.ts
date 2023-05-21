@@ -28,4 +28,13 @@ describe('Testes de integração da rota Teams', async () => {
     expect(response.body).to.be.deep.equal(teamsMock);
   });
 
+  it('A rota /teams/:id deve retornar o time com o id correspondente', async () => {
+    sinon.stub(TeamModel, 'findByPk').resolves(teamsMock[0] as TeamModel)
+
+    const response = await chai.request(app).get('/teams/1');
+
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.be.deep.equal(teamsMock[0]);
+  });
+
 });
