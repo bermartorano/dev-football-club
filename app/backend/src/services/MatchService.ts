@@ -24,20 +24,10 @@ export default class MatchService {
         { model: TeamModel, as: 'homeTeam', attributes: ['teamName'] },
         { model: TeamModel, as: 'awayTeam', attributes: ['teamName'] },
       ],
+      raw: true,
+      nest: true,
     });
-
-    const matchesValues = matches.map((match) => match.dataValues);
-    const matchValuesWithTeams = matchesValues.map((match) => {
-      if (!match.homeTeam || !match.awayTeam) throw new Error('Inconsistency in the Database');
-      const newMatch = {
-        ...match,
-        homeTeam: { teamName: match.homeTeam.teamName },
-        awayTeam: { teamName: match.awayTeam.teamName },
-      };
-      return newMatch;
-    });
-
-    return matchValuesWithTeams;
+    return matches;
   }
 
   static async finishMatch(id: number) {
