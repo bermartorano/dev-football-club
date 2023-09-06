@@ -15,7 +15,7 @@ Neste projeto, desenvolvi uma aplicação back-end capaz de realizar operações
 
 ## Como executar a aplicação
 * Clone o repositório
-* Instale as dependências `npm install`
+* Instale as dependências na raiz do projeto `npm install`
 * Rode o comando `npm run compose:up`
 
 ## Detalhes Sobre a Implementação
