@@ -8,6 +8,7 @@ Neste projeto, desenvolvi uma aplicação back-end capaz de realizar operações
 
 ## Ferramentas Utilizadas
 * Typescript
+* MySQL
 * Express
 * Sequelize
 * JsonWebToken
