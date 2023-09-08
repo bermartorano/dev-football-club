@@ -7,6 +7,7 @@ Neste projeto, desenvolvi uma aplicação back-end capaz de realizar operações
 </div>
 
 ## Ferramentas Utilizadas
+* Node.js
 * Typescript
 * MySQL
 * Express
